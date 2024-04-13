@@ -6,6 +6,7 @@ const SearchResult = ({ books }) => {
     <div className="flex flex-wrap max-w-4xl mx-auto gap-8">
       {books.map((book) => (
         <MinBook
+          key={book.id}
           cover={book.cover}
           title={book.title}
           author={book.author}

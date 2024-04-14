@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Hero from "./components/Hero";
 
 const App = () => {
+  const [search, setSearch] = useState("");
+
   const books = [
     {
       id: 1,
@@ -28,9 +30,20 @@ const App = () => {
     },
   ];
 
+  const filteredBooks =
+    search === ""
+      ? []
+      : books.filter((book) =>
+          book.title.toLowerCase().includes(search.toLowerCase())
+        );
+
+  useEffect(() => {
+    console.log(filteredBooks);
+  }, [filteredBooks]);
+
   return (
     <>
-      <Hero books={books} />
+      <Hero books={filteredBooks} search={search} setSearch={setSearch} />
     </>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 import { FaSearch } from "react-icons/fa";
 import SearchResult from "./SearchResult";
 
-const Hero = ({ setSearch, books }) => {
+const Hero = ({ setSearch, books, search }) => {
   return (
     <main className="p-3 h-screen flex flex-col">
       <div className="flex flex-col items-center gap-2 p-4">
@@ -21,6 +21,22 @@ const Hero = ({ setSearch, books }) => {
         </div>
       </div>
       <SearchResult books={books} />
+      <div
+        className={
+          search !== "" && books.length > 0
+            ? "hidden"
+            : "inline text-center text-2xl text-zinc-400 max-w-[400px] mx-auto p-6"
+        }
+      >
+        <p className={search === "" ? "inline" : "hidden"}>
+          Digite o nome do livro para verificar disponibilidade
+        </p>
+        <p
+          className={search !== "" && books.length === 0 ? "inline" : "hidden"}
+        >
+          Livro não encontrado!
+        </p>
+      </div>
     </main>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaPlus } from "react-icons/fa";
 import SearchResult from "./SearchResult";
 
 const Hero = ({ setSearch, books, search }) => {
@@ -15,8 +15,11 @@ const Hero = ({ setSearch, books, search }) => {
             placeholder="Digite o nome do livro"
             onChange={(e) => setSearch(e.target.value)}
           />
-          <button className="bg-blue-700 p-2 rounded-md">
+          <button className="bg-blue-700 p-2 rounded-md border-2 border-blue-700">
             <FaSearch className="text-zinc-100" />
+          </button>
+          <button className="bg-zinc-100 p-2 rounded-md border-2 border-blue-700">
+            <FaPlus className="text-blue-700" />
           </button>
         </div>
       </div>

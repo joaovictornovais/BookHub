@@ -1,6 +1,6 @@
 import React from "react";
 
-const MinBook = ({ cover, title, author, status }) => {
+const MinBook = ({ cover, title, author, borrow }) => {
   return (
     <div className="w-[200px] border-2 border-zinc-200 rounded-sm mx-auto">
       <div className="bg-zinc-200">
@@ -8,9 +8,9 @@ const MinBook = ({ cover, title, author, status }) => {
           src={cover}
           alt={title}
           className={
-            status != "null"
-              ? "w-36 mx-auto cursor-pointer saturate-0"
-              : "w-36 mx-auto cursor-pointer"
+            borrow === null
+              ? "w-36 mx-auto cursor-pointer"
+              : "w-36 mx-auto cursor-pointer saturate-0"
           }
         />
       </div>
@@ -21,10 +21,10 @@ const MinBook = ({ cover, title, author, status }) => {
         <span className="text-xs text-zinc-800">por {author}</span>
         <p
           className={
-            status != "null" ? "text-red-700 text-xs" : "text-green-700 text-xs"
+            borrow === null ? "text-green-700 text-xs" : "text-red-700 text-xs"
           }
         >
-          {status != "null" ? "Indisponível" : "Disponível"}
+          {borrow === null ? "Disponível" : "Indisponível"}
         </p>
       </div>
     </div>

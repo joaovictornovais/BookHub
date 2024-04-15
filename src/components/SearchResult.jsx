@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MinBook from "./MinBook";
 
 const SearchResult = ({ books }) => {
@@ -10,7 +10,8 @@ const SearchResult = ({ books }) => {
           cover={book.cover}
           title={book.title}
           author={book.author}
-          status={book.status}
+          borrow={book.borrow}
+          publisher={book.publisher}
         />
       ))}
     </div>

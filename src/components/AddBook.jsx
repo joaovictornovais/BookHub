@@ -1,80 +1,42 @@
 import React from "react";
 import { FaPlus } from "react-icons/fa";
+import Button from "./Button";
+import FormInput from "./FormInput";
+import FormTitle from "./FormTitle";
+import FormSection from "./FormSection";
 
 const AddBook = () => {
+  const subtitle =
+    "Preencha as informações abaixo para cadastrar um livro em nosso banco de dados.";
+
   return (
-    <section className="p-3 h-screen">
-      <div className="flex flex-col items-center p-4 gap-4">
-        <div className="flex flex-col gap-3 items-center">
-          <h1 className="text-4xl font-semibold text-blue-600">
-            Adicionar Livro
-          </h1>
-          <p className="text-zinc-500">
-            Preencha as informações para adicionar um novo livro ao nosso banco
-            de dados.
-          </p>
-        </div>
-        <form className="flex flex-col gap-6">
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2 justify-between">
-              <label>Título</label>
-              <input
+    <FormSection>
+      <FormTitle subtitle={subtitle}>Adicionar Livro</FormTitle>
+      <form className="flex flex-col gap-6">
+        <div className="flex flex-col gap-2">
+          <FormInput>Título</FormInput>
+          <FormInput>Autor</FormInput>
+          <FormInput>Editora</FormInput>
+          <FormInput>Qtd. de páginas</FormInput>
+          <FormInput>URL da capa</FormInput>
+          <div className="flex items-center gap-2 justify-between">
+            <label>Categoria</label>
+            <div className="flex gap-2 items-center">
+              <select
                 className="p-2 rounded-md text-sm text-zinc-700 bg-zinc-200"
                 required
-              />
-            </div>
-            <div className="flex items-center gap-2 justify-between">
-              <label>Autor</label>
-              <input
-                className="p-2 rounded-md text-sm text-zinc-700 bg-zinc-200"
-                required
-              />
-            </div>
-            <div className="flex items-center gap-2 justify-between">
-              <label>Editora</label>
-              <input
-                className="p-2 rounded-md text-sm text-zinc-700 bg-zinc-200"
-                required
-              />
-            </div>
-            <div className="flex items-center gap-2 justify-between">
-              <label>Qtd. de Páginas</label>
-              <input
-                className="p-2 rounded-md text-sm text-zinc-700 bg-zinc-200"
-                required
-              />
-            </div>
-            <div className="flex items-center gap-2 justify-between">
-              <label>URL da imagem de capa</label>
-              <input
-                className="p-2 rounded-md text-sm text-zinc-700 bg-zinc-200"
-                required
-              />
-            </div>
-            <div className="flex items-center gap-2 justify-between">
-              <label>Categoria</label>
-              <div className="flex gap-2 items-center">
-                <select
-                  className="p-2 rounded-md text-sm text-zinc-700 bg-zinc-200"
-                  required
-                >
-                  <option>Mangá</option>
-                </select>
-                <button className="p-2 rounded-md bg-blue-700">
-                  <FaPlus className="text-zinc-50" />
-                </button>
-              </div>
+              >
+                <option>Mangá</option>
+              </select>
+              <Button>
+                <FaPlus />
+              </Button>
             </div>
           </div>
-          <button
-            type="submit"
-            className="p-2 text-zinc-200 bg-blue-700 border-2 border-blue-700 rounded-md"
-          >
-            Adicionar
-          </button>
-        </form>
-      </div>
-    </section>
+        </div>
+        <Button>Adicionar</Button>
+      </form>
+    </FormSection>
   );
 };
 

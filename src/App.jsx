@@ -44,7 +44,7 @@ const App = () => {
 
   return (
     <>
-      {/* <Hero books={filteredBooks} search={search} setSearch={setSearch} /> */}
+      <Hero books={filteredBooks} search={search} setSearch={setSearch} />
       <AddBook />
     </>
   );

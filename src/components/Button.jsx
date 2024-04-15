@@ -1,15 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Button = ({ children, color }) => {
+const Button = ({ children, color, link }) => {
   return (
     <button
-      className={
-        color === "secundary"
-          ? "p-2 border-2 border-blue-700 bg-zinc-100 text-blue-700 rounded-md hover:bg-blue-800 hover:text-zinc-100 transition-all"
-          : "p-2 border-2 border-blue-700 bg-blue-700 text-zinc-100 rounded-md hover:bg-blue-800 transition-all"
-      }
+      className={color === "secundary" ? "button-secundary" : "button-primary"}
     >
-      {children}
+      <Link to={link} className="p-2 items-center flex justify-center">
+        {children}
+      </Link>
     </button>
   );
 };

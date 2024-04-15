@@ -19,7 +19,7 @@ const AddBook = () => {
         <FormInput>Editora</FormInput>
         <FormInput>Qtd. de páginas</FormInput>
         <FormInput>URL da capa</FormInput>
-        <div className="flex items-center gap-2 justify-between">
+        <div className="flex items-center gap-2 justify-between px-2">
           <label>Categoria</label>
           <div className="flex gap-2 items-center">
             <select
@@ -28,7 +28,7 @@ const AddBook = () => {
             >
               <option>Mangá</option>
             </select>
-            <Button>
+            <Button link="/adicionar-categoria">
               <FaPlus />
             </Button>
           </div>

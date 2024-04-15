@@ -3,6 +3,8 @@ import SearchBook from "./pages/SearchBook";
 import AddBook from "./pages/AddBook";
 import AddCategory from "./pages/AddCategory";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 const App = () => {
   const [search, setSearch] = useState("");
 
@@ -45,9 +47,22 @@ const App = () => {
 
   return (
     <>
-      <SearchBook books={filteredBooks} search={search} setSearch={setSearch} />
-      <AddBook />
-      <AddCategory />
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <SearchBook
+                books={filteredBooks}
+                search={search}
+                setSearch={setSearch}
+              />
+            }
+          />
+          <Route path="/adicionar-livro" element={<AddBook />} />
+          <Route path="/adicionar-categoria" element={<AddCategory />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 };

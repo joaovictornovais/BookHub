@@ -19,7 +19,7 @@ const SearchBook = ({ setSearch, books, search }) => {
           <Button>
             <FaSearch />
           </Button>
-          <Button color="secundary">
+          <Button color="secundary" link="/adicionar-livro">
             <FaPlus />
           </Button>
         </div>

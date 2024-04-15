@@ -1,11 +1,11 @@
 import React from "react";
-import Button from "./Button";
+import FormButton from "./FormButton";
 
-const Form = ({ children, button }) => {
+const Form = ({ children }) => {
   return (
-    <form className="flex flex-col gap-6 w-[400px]">
+    <form className="flex flex-col gap-6 max-w-[400px]">
       <div className="flex flex-col gap-2">{children}</div>
-      <Button>Adicionar</Button>
+      <FormButton type="submit">Adicionar</FormButton>
     </form>
   );
 };

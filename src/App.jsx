@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SearchBook from "./pages/SearchBook";
 import AddBook from "./pages/AddBook";
+import AddCategory from "./pages/AddCategory";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -46,6 +47,7 @@ const App = () => {
     <>
       <SearchBook books={filteredBooks} search={search} setSearch={setSearch} />
       <AddBook />
+      <AddCategory />
     </>
   );
 };

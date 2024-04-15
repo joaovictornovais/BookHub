@@ -1,9 +1,9 @@
 import React from "react";
 import { FaSearch, FaPlus } from "react-icons/fa";
-import SearchResult from "./SearchResult";
-import Button from "./Button";
+import SearchResult from "../components/SearchResult";
+import Button from "../components/Button";
 
-const Hero = ({ setSearch, books, search }) => {
+const SearchBook = ({ setSearch, books, search }) => {
   return (
     <main className="p-3 h-screen flex flex-col">
       <div className="flex flex-col items-center gap-2 p-4">
@@ -45,4 +45,4 @@ const Hero = ({ setSearch, books, search }) => {
   );
 };
 
-export default Hero;
+export default SearchBook;

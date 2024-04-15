@@ -1,9 +1,9 @@
 import React from "react";
 import { FaPlus } from "react-icons/fa";
-import Button from "./Button";
-import FormInput from "./FormInput";
-import FormTitle from "./FormTitle";
-import FormSection from "./FormSection";
+import Button from "../components/Button";
+import FormInput from "../components/FormInput";
+import FormTitle from "../components/FormTitle";
+import FormSection from "../components/FormSection";
 
 const AddBook = () => {
   const subtitle =

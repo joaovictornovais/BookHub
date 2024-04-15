@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Hero from "./components/Hero";
-import AddBook from "./components/AddBook";
+import SearchBook from "./pages/SearchBook";
+import AddBook from "./pages/AddBook";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -44,7 +44,7 @@ const App = () => {
 
   return (
     <>
-      <Hero books={filteredBooks} search={search} setSearch={setSearch} />
+      <SearchBook books={filteredBooks} search={search} setSearch={setSearch} />
       <AddBook />
     </>
   );

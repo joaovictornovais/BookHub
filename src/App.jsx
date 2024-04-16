@@ -8,17 +8,24 @@ import axios from "axios";
 
 const App = () => {
   const [search, setSearch] = useState("");
-  const [books, setBooks] = useState("");
+  const [books, setBooks] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const loadBooks = async () => {
-    await axios.get("http://localhost:8080/books").then((res) => {
-      setBooks(res.data);
-      console.log(res.data);
-    });
+    await axios
+      .get("http://localhost:8080/books")
+      .then((res) => setBooks(res.data));
+  };
+
+  const loadCategories = async () => {
+    await axios
+      .get("http://localhost:8080/books/categories")
+      .then((res) => setCategories(res.data));
   };
 
   useEffect(() => {
     loadBooks();
+    loadCategories();
   }, []);
 
   const filteredBooks =
@@ -42,8 +49,14 @@ const App = () => {
               />
             }
           />
-          <Route path="/adicionar-livro" element={<AddBook />} />
-          <Route path="/adicionar-categoria" element={<AddCategory />} />
+          <Route
+            path="/adicionar-livro"
+            element={<AddBook categories={categories} />}
+          />
+          <Route
+            path="/adicionar-categoria"
+            element={<AddCategory categories={categories} />}
+          />
         </Routes>
       </BrowserRouter>
     </>

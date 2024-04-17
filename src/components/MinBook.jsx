@@ -9,23 +9,27 @@ const MinBook = ({ cover, title, author, borrow }) => {
           alt={title}
           className={
             borrow === null
-              ? "w-36 mx-auto cursor-pointer"
-              : "w-36 mx-auto cursor-pointer saturate-0"
+              ? "w-36 h-56 object-contain mx-auto cursor-pointer"
+              : "w-36 h-56 mx-auto cursor-pointer saturate-0"
           }
         />
       </div>
-      <div className="p-2">
-        <p className="text-zinc-900 text-sm font-medium hover:text-blue-700 transition-all cursor-pointer">
+      <div className="flex flex-col h-[120px] m-2 gap-2">
+        <p className="text-zinc-900 font-medium hover:text-blue-700 transition-all cursor-pointer">
           {title}
         </p>
-        <span className="text-xs text-zinc-800">por {author}</span>
-        <p
-          className={
-            borrow === null ? "text-green-700 text-xs" : "text-red-700 text-xs"
-          }
-        >
-          {borrow === null ? "Disponível" : "Indisponível"}
-        </p>
+        <div>
+          <span className="text-sm text-zinc-800">por {author}</span>
+          <p
+            className={
+              borrow === null
+                ? "text-green-700 text-sm"
+                : "text-red-700 text-sm"
+            }
+          >
+            {borrow === null ? "Disponível" : "Indisponível"}
+          </p>
+        </div>
       </div>
     </div>
   );

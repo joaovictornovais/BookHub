@@ -5,6 +5,7 @@ import AddCategory from "./pages/AddCategory";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
+import BookDetails from "./pages/BookDetails";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -50,6 +51,16 @@ const App = () => {
             }
           />
           <Route
+            path="/livros"
+            element={
+              <SearchBook
+                books={filteredBooks}
+                search={search}
+                setSearch={setSearch}
+              />
+            }
+          />
+          <Route
             path="/adicionar-livro"
             element={<AddBook categories={categories} />}
           />
@@ -57,6 +68,7 @@ const App = () => {
             path="/adicionar-categoria"
             element={<AddCategory categories={categories} />}
           />
+          <Route path="/livros/:id" element={<BookDetails />} />
         </Routes>
       </BrowserRouter>
     </>

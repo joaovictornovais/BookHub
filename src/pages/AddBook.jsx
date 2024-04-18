@@ -18,22 +18,20 @@ const AddBook = ({ categories }) => {
   const subtitle =
     "Preencha as informações abaixo para cadastrar um livro em nosso banco de dados.";
 
-  const newBook = () => {
-    if (category !== 0) {
-      axios
-        .post("http://localhost:8080/books", {
-          title: title,
-          author: author,
-          publisher: publisher,
-          pages: pages,
-          cover: cover,
+  const createBook = () => {
+    axios
+      .post("http://localhost:8080/books", {
+        title: title,
+        author: author,
+        publisher: publisher,
+        pages: pages,
+        cover: cover,
+      })
+      .then((res) =>
+        axios.post(`http://localhost:8080/books/${res.data.id}/categories`, {
+          categoryId: category,
         })
-        .then((res) =>
-          axios.post(`http://localhost:8080/books/${res.data.id}/categories`, {
-            categoryId: category,
-          })
-        );
-    }
+      );
   };
 
   return (
@@ -41,7 +39,7 @@ const AddBook = ({ categories }) => {
       <FormTitle subtitle={subtitle} back="/">
         Adicionar Livro
       </FormTitle>
-      <Form btnFn={newBook} color="blue">
+      <Form btnFn={createBook} color="blue">
         <FormInput setValue={setTitle}>Título</FormInput>
         <FormInput setValue={setAuthor}>Autor</FormInput>
         <FormInput setValue={setPublisher}>Editora</FormInput>

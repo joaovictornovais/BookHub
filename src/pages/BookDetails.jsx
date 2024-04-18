@@ -38,14 +38,10 @@ const BookDetails = () => {
               <h3>por: {book.author}</h3>
             </div>
 
-            <div>
-              <h4>Categoria(s): </h4>
-              <div>
-                <p></p>
-              </div>
-            </div>
-
-            <Button color={book.borrow === null ? "blue" : "red"}>
+            <Button
+              link={`/livros/${id}/emprestar`}
+              color={book.borrow === null ? "blue" : "red"}
+            >
               {book.borrow === null ? "Emprestar" : "Devolver"}
             </Button>
           </div>

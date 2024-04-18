@@ -1,6 +1,4 @@
 import React from "react";
-import { MdArrowBack } from "react-icons/md";
-import { Link } from "react-router-dom";
 import Back from "./Back";
 
 const FormTitle = ({ children, subtitle, back }) => {

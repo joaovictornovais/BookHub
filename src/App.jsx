@@ -6,6 +6,7 @@ import AddCategory from "./pages/AddCategory";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import BookDetails from "./pages/BookDetails";
+import Borrow from "./pages/Borrow";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -69,6 +70,7 @@ const App = () => {
             element={<AddCategory categories={categories} />}
           />
           <Route path="/livros/:id" element={<BookDetails />} />
+          <Route path="/livros/:id/emprestar" element={<Borrow />} />
         </Routes>
       </BrowserRouter>
     </>

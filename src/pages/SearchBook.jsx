@@ -11,15 +11,17 @@ const SearchBook = ({ setSearch, books, search }) => {
           <span className="text-blue-700">Book</span>Hub
         </h1>
         <div className="flex items-center gap-1">
-          <input
-            className="bg-gray-200 p-2 w-[300px] text-sm rounded-md text-zinc-800"
-            placeholder="Digite o nome do livro"
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <Button>
-            <FaSearch />
-          </Button>
-          <Button color="secundary" link="/adicionar-livro">
+          <div className="flex items-center bg-gray-200 rounded-md text-zinc-800">
+            <input
+              className="p-2 w-[300px] text-sm rounded-md bg-gray-200"
+              placeholder="Digite o nome do livro"
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <div className="bg-gray-200 px-2 cursor-pointer">
+              <FaSearch />
+            </div>
+          </div>
+          <Button color="blue" link="/adicionar-livro">
             <FaPlus />
           </Button>
         </div>

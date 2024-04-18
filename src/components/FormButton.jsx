@@ -6,7 +6,11 @@ const FormButton = ({ color, children, btnFn }) => {
       type="submit"
       onClick={btnFn}
       className={
-        color === "secundary" ? "button-secundary p-2" : "button-primary p-2"
+        color === "blue"
+          ? "button-blue p-2"
+          : color === "red"
+          ? "button-red p-2"
+          : "button-white-blue p-2"
       }
     >
       {children}

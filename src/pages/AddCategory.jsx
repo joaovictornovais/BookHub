@@ -21,7 +21,7 @@ const AddCategory = ({ categories }) => {
       <FormTitle subtitle={subtitle} back="/adicionar-livro">
         Adicionar Categoria
       </FormTitle>
-      <Form btnFn={addCategory}>
+      <Form btnFn={addCategory} color="blue">
         <FormInput setValue={setCategory}>Nome da Categoria</FormInput>
       </Form>
     </FormSection>

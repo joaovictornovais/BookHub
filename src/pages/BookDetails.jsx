@@ -45,7 +45,9 @@ const BookDetails = () => {
               </div>
             </div>
 
-            <Button>{book.borrow === null ? "Emprestar" : "Devolver"}</Button>
+            <Button color={book.borrow === null ? "blue" : "red"}>
+              {book.borrow === null ? "Emprestar" : "Devolver"}
+            </Button>
           </div>
         </div>
       </div>

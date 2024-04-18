@@ -41,7 +41,7 @@ const AddBook = ({ categories }) => {
       <FormTitle subtitle={subtitle} back="/">
         Adicionar Livro
       </FormTitle>
-      <Form btnFn={newBook}>
+      <Form btnFn={newBook} color="blue">
         <FormInput setValue={setTitle}>Título</FormInput>
         <FormInput setValue={setAuthor}>Autor</FormInput>
         <FormInput setValue={setPublisher}>Editora</FormInput>
@@ -65,7 +65,7 @@ const AddBook = ({ categories }) => {
                 </option>
               ))}
             </select>
-            <Button link="/adicionar-categoria">
+            <Button link="/adicionar-categoria" color="blue">
               <FaPlus />
             </Button>
           </div>

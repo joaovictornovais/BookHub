@@ -1,29 +1,64 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FormSection from "../components/FormSection";
 import FormTitle from "../components/FormTitle";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import FormInput from "../components/FormInput";
 import Form from "../components/Form";
 
 const Borrow = () => {
   const { id } = useParams();
-  const [nome, setNome] = useState();
-  const [sobrenome, setSobrenome] = useState();
-  const [email, setEmail] = useState();
+  const [book, setBook] = useState();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
-  const borrowBook = () => {};
+  useEffect(() => {
+    loadBook();
+  }, []);
+
+  const loadBook = async () => {
+    await axios
+      .get(`http://localhost:8080/books/${parseInt(id)}`)
+      .then((res) => setBook(res.data));
+  };
+
+  const borrowBook = async () => {
+    await axios
+      .get(`http://localhost:8080/users?email=${email}`)
+      .then((res) => {
+        if (res.data === "") {
+          axios
+            .post(`http://localhost:8080/users`, {
+              firstName: firstName,
+              lastName: lastName,
+              email: email,
+            })
+            .then((res) => {
+              axios.post(`http://localhost:8080/books/${id}/borrow`, {
+                userId: parseInt(res.data.id),
+              });
+            });
+        } else {
+          axios.post(`http://localhost:8080/books/${id}/borrow`, {
+            userId: parseInt(res.data.id),
+          });
+        }
+      });
+    navigate("/");
+  };
 
   return (
     <FormSection>
       <FormTitle back={`/livros/${id}`}>Empréstimo de livro</FormTitle>
-      <Form color="blue" btnText="Emprestar">
+      <Form color="blue" btnText="Emprestar" btnFn={borrowBook}>
         <p className="text-xs px-2 uppercase tracking-wider text-zinc-700">
           Dados do cliente
         </p>
         <div className="space-y-2">
-          <FormInput setValue={setNome}>Nome</FormInput>
-          <FormInput setValue={setSobrenome}>Sobrenome</FormInput>
+          <FormInput setValue={setFirstName}>Nome</FormInput>
+          <FormInput setValue={setLastName}>Sobrenome</FormInput>
           <FormInput setValue={setEmail} type="email">
             E-mail
           </FormInput>

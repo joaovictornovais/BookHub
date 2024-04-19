@@ -10,11 +10,14 @@ const BookDetails = () => {
   const { id } = useParams();
   const [book, setBook] = useState("");
 
+  const [bookStatus, setBookStatus] = useState("emprestar");
+
   const loadBook = async () => {
     await axios
       .get(`http://localhost:8080/books/${parseInt(id)}`)
       .then((res) => {
         setBook(res.data);
+        if (res.data.borrow !== null) setBookStatus("devolver");
       });
   };
 
@@ -39,7 +42,7 @@ const BookDetails = () => {
             </div>
 
             <Button
-              link={`/livros/${id}/emprestar`}
+              link={`/livros/${id}/${bookStatus}`}
               color={book.borrow === null ? "blue" : "red"}
             >
               {book.borrow === null ? "Emprestar" : "Devolver"}

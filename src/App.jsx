@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import BookDetails from "./pages/BookDetails";
 import Borrow from "./pages/Borrow";
+import ReturnBook from "./pages/ReturnBook";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -71,6 +72,7 @@ const App = () => {
           />
           <Route path="/livros/:id" element={<BookDetails />} />
           <Route path="/livros/:id/emprestar" element={<Borrow />} />
+          <Route path="/livros/:id/devolver" element={<ReturnBook />} />
         </Routes>
       </BrowserRouter>
     </>

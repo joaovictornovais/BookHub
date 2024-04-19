@@ -3,7 +3,7 @@ import React from "react";
 const FormButton = ({ color, children, btnFn }) => {
   return (
     <button
-      type="submit"
+      type="button"
       onClick={btnFn}
       className={
         color === "blue"

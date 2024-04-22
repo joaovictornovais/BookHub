@@ -36,23 +36,36 @@ const Borrow = () => {
               email: email,
             })
             .then((res) => {
-              axios.post(`http://localhost:8080/books/${id}/borrow`, {
-                userId: parseInt(res.data.id),
-              });
+              axios
+                .post(`http://localhost:8080/books/${id}/borrow`, {
+                  userId: parseInt(res.data.id),
+                })
+                .then((res) => {
+                  if (res.status === 200) {
+                    navigate("/");
+                    window.location.reload();
+                  }
+                });
             });
         } else {
-          axios.post(`http://localhost:8080/books/${id}/borrow`, {
-            userId: parseInt(res.data.id),
-          });
+          axios
+            .post(`http://localhost:8080/books/${id}/borrow`, {
+              userId: parseInt(res.data.id),
+            })
+            .then((res) => {
+              if (res.status === 200) {
+                navigate("/");
+                window.location.reload();
+              }
+            });
         }
       });
-    navigate("/");
   };
 
   return (
     <FormSection>
       <FormTitle back={`/livros/${id}`}>Empréstimo de livro</FormTitle>
-      <Form color="blue" btnText="Emprestar" btnFn={borrowBook}>
+      <Form color="blue" btnText="Emprestar" btnFn={borrowBook} type="button">
         <p className="text-xs px-2 uppercase tracking-wider text-zinc-700">
           Dados do cliente
         </p>

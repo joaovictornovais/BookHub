@@ -1,9 +1,9 @@
 import React from "react";
 
-const FormButton = ({ color, children, btnFn }) => {
+const FormButton = ({ color, children, btnFn, type }) => {
   return (
     <button
-      type="button"
+      type={type}
       onClick={btnFn}
       className={
         color === "blue"

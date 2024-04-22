@@ -26,8 +26,13 @@ const ReturnBook = () => {
           `http://localhost:8080/books/${id}/borrow?userId=${res.data.id}`,
           {}
         )
-      );
-    navigate("/");
+      )
+      .then((res) => {
+        if (res.status === 204) {
+          navigate("/");
+          window.location.reload();
+        }
+      });
   };
 
   useEffect(() => {

@@ -66,10 +66,7 @@ const App = () => {
             path="/adicionar-livro"
             element={<AddBook categories={categories} />}
           />
-          <Route
-            path="/adicionar-categoria"
-            element={<AddCategory categories={categories} />}
-          />
+          <Route path="/adicionar-categoria" element={<AddCategory />} />
           <Route path="/livros/:id" element={<BookDetails />} />
           <Route path="/livros/:id/emprestar" element={<Borrow />} />
           <Route path="/livros/:id/devolver" element={<ReturnBook />} />

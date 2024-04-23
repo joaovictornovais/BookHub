@@ -12,6 +12,7 @@ const Borrow = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [userId, setUserId] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,36 +28,33 @@ const Borrow = () => {
   const borrowBook = async () => {
     await axios
       .get(`http://localhost:8080/users?email=${email}`)
-      .then((res) => {
-        if (res.data === "") {
-          axios
-            .post(`http://localhost:8080/users`, {
-              firstName: firstName,
-              lastName: lastName,
-              email: email,
-            })
-            .then((res) => {
-              axios
-                .post(`http://localhost:8080/books/${id}/borrow`, {
-                  userId: parseInt(res.data.id),
-                })
-                .then((res) => {
-                  if (res.status === 200) {
-                    navigate("/");
-                    window.location.reload();
-                  }
-                });
+      .catch((err) =>
+        axios
+          .post(`http://localhost:8080/users`, {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+          })
+          .then((res) => {
+            axios.post(`http://localhost:8080/books/${id}/borrow`, {
+              userId: parseInt(res.data.id),
             });
+          })
+          .finally((res) => {
+            navigate(`/livros/${id}`);
+            window.location.reload();
+          })
+      )
+      .then((res) => {
+        if (res.status !== 200) {
         } else {
           axios
             .post(`http://localhost:8080/books/${id}/borrow`, {
               userId: parseInt(res.data.id),
             })
-            .then((res) => {
-              if (res.status === 200) {
-                navigate("/");
-                window.location.reload();
-              }
+            .finally((res) => {
+              navigate(`/livros/${id}`);
+              window.location.reload();
             });
         }
       });

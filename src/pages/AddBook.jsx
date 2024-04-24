@@ -40,11 +40,6 @@ const AddBook = ({ categories }) => {
         Adicionar Livro
       </FormTitle>
       <Form btnFn={createBook} color="blue">
-        <FormInput setValue={setTitle}>Título</FormInput>
-        <FormInput setValue={setAuthor}>Autor</FormInput>
-        <FormInput setValue={setPublisher}>Editora</FormInput>
-        <FormInput setValue={setPages}>Qtd. de páginas</FormInput>
-        <FormInput setValue={setCover}>URL da capa</FormInput>
         <div className="flex items-center gap-2 justify-between px-2">
           <label>Categoria</label>
           <div className="flex gap-2 items-center">
@@ -68,6 +63,11 @@ const AddBook = ({ categories }) => {
             </Button>
           </div>
         </div>
+        <FormInput setValue={setTitle}>Título</FormInput>
+        <FormInput setValue={setAuthor}>Autor</FormInput>
+        <FormInput setValue={setPublisher}>Editora</FormInput>
+        <FormInput setValue={setPages}>Qtd. de páginas</FormInput>
+        <FormInput setValue={setCover}>URL da capa</FormInput>
       </Form>
     </FormSection>
   );

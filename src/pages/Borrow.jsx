@@ -36,13 +36,14 @@ const Borrow = () => {
             email: email,
           })
           .then((res) => {
-            axios.post(`http://localhost:8080/books/${id}/borrow`, {
-              userId: parseInt(res.data.id),
-            });
-          })
-          .finally((res) => {
-            navigate(`/livros/${id}`);
-            window.location.reload();
+            axios
+              .post(`http://localhost:8080/books/${id}/borrow`, {
+                userId: parseInt(res.data.id),
+              })
+              .then((res) => {
+                navigate(`/livros/${id}`);
+                window.location.reload();
+              });
           })
       )
       .then((res) => {
@@ -52,7 +53,7 @@ const Borrow = () => {
             .post(`http://localhost:8080/books/${id}/borrow`, {
               userId: parseInt(res.data.id),
             })
-            .finally((res) => {
+            .then((res) => {
               navigate(`/livros/${id}`);
               window.location.reload();
             });

@@ -11,6 +11,7 @@ const ReturnBook = () => {
   const navigate = useNavigate();
 
   const [book, setBook] = useState("");
+  const [load, setLoad] = useState(false);
 
   const loadBook = async () => {
     await axios
@@ -19,6 +20,7 @@ const ReturnBook = () => {
   };
 
   const returnBook = async () => {
+    setLoad(true);
     axios
       .get(`http://localhost:8080/users?email=${book.borrow.borrowedTo}`)
       .then((res) =>
@@ -61,6 +63,7 @@ const ReturnBook = () => {
           </Link>
         </div>
       </div>
+      <div className={load ? "loader" : "hidden"}></div>
     </FormSection>
   );
 };

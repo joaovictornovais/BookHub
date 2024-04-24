@@ -12,7 +12,7 @@ const Borrow = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [userId, setUserId] = useState();
+  const [load, setLoad] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,6 +26,7 @@ const Borrow = () => {
   };
 
   const borrowBook = async () => {
+    setLoad(true);
     await axios
       .get(`http://localhost:8080/users?email=${email}`)
       .catch((err) =>
@@ -76,6 +77,7 @@ const Borrow = () => {
           </FormInput>
         </div>
       </Form>
+      <div className={load ? "loader" : "hidden"}></div>
     </FormSection>
   );
 };
